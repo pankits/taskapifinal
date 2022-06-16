@@ -1,6 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
     respond_to :json
-    
+  
     private
     def respond_with(resource, _opts = {})
       render json: { message: 'You are logged in.' }, status: :ok
@@ -17,6 +17,6 @@ class Users::SessionsController < Devise::SessionsController
     end
   
     def log_out_failure
-      render json: { message: "Hmm nothing happened."}, status: :unauthorized
+      render json: { message: "Log-out sucessfully"}, status: :unauthorized
     end
   end
