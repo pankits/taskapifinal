@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users,
              controllers: {
-                 sessions: 'users/sessions',
-                 registrations: 'users/registrations'
-             }
-  get '/member-data', to: 'members#show'
+                            sessions: 'users/sessions',
+                            registrations: 'users/registrations'
+                          }
+
+  resources :users, only: [:index, :create,:destroy,:edit]
+
 end

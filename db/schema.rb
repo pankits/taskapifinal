@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_16_144722) do
+ActiveRecord::Schema.define(version: 2022_06_20_145346) do
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
     t.datetime "exp", null: false
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  end
+
+  create_table "userapis", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "contact"
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -27,7 +36,15 @@ ActiveRecord::Schema.define(version: 2022_06_16_144722) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_type"
+    t.integer "status"
+    t.string "jti", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "contact"
+    t.integer "age"
+    t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
